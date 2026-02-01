@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const userSchema = new mongoose.Schema(
   {
@@ -14,7 +16,10 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       trim: true,
     },
-    avatar: {
+    profilePicture:{
+      type: String,
+      default: 'empty-avatar.png',
+    },
     password: {
       type: String,
       required: true,
@@ -22,6 +27,7 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
 
 const User = mongoose.model('User', userSchema);
 
