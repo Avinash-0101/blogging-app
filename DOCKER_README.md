@@ -84,6 +84,42 @@ cd frontend
 npm run dev
 ```
 
+## Push Images to Docker Hub Registry
+
+1. **Replace the placeholder** in `docker-compose.yml`: change `YOUR_DOCKERHUB_USERNAME` to your actual Docker Hub username.
+
+2. **Log in to Docker Hub:**
+   ```bash
+   docker login
+   ```
+   Enter your Docker Hub username and password when prompted.
+
+3. **Build the images:**
+   ```bash
+   docker-compose build
+   ```
+
+4. **Push to the registry:**
+   ```bash
+   docker push YOUR_DOCKERHUB_USERNAME/blogging-backend:latest
+   docker push YOUR_DOCKERHUB_USERNAME/blogging-frontend:latest
+   ```
+   Or push both at once:
+   ```bash
+   docker-compose push
+   ```
+
+5. **Pull and run on another machine:**
+   ```bash
+   docker pull YOUR_DOCKERHUB_USERNAME/blogging-backend:latest
+   docker pull YOUR_DOCKERHUB_USERNAME/blogging-frontend:latest
+   # Then use docker-compose (with image: instead of build:) or run manually
+   ```
+
+> **Note:** The `mongodb` service uses the official `mongo:7` image from Docker Hub, so there's no need to push it.
+
+---
+
 ## Production Considerations
 
 For production deployment:

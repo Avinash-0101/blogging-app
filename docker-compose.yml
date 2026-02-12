@@ -18,6 +18,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    image: avinash0101/blogging-backend:latest
     container_name: blogging-backend
     restart: unless-stopped
     ports:
@@ -39,6 +40,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    image: avinash0101/blogging-frontend:latest
     container_name: blogging-frontend
     restart: unless-stopped
     ports:
